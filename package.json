@@ -25,7 +25,7 @@
   "license": "MIT",
   "dependencies": {
     "q": "^1.4.1",
-    "superagent": "^1.4.0"
+    "superagent": "^3.0.0"
   },
   "devDependencies": {
     "@bubltechnology/eslint-config-bubl": "^2.0.1",
