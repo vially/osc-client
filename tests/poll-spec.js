@@ -24,9 +24,10 @@ describe('poll', function () {
       }
 
       poll.pollPeriod = 1
-      poll.commandStatus(fakeClient, 12, promise, Date.now(), null)
+      const intervalId = poll.commandStatus(fakeClient, 12, promise, Date.now(), null)
       setTimeout(function () {
         assert.equal(fakeClient.commandsStatus.called, true)
+        clearTimeout(intervalId)
         done()
       }, 100)
     })
@@ -42,9 +43,10 @@ describe('poll', function () {
       }
 
       poll.pollPeriod = 1
-      poll.commandStatus(fakeClient, 15, promise, Date.now(), null)
+      const intervalId = poll.commandStatus(fakeClient, 15, promise, Date.now(), null)
       setTimeout(function () {
         assert(fakeClient.commandsStatus.calledWith(15))
+        clearTimeout(intervalId)
         done()
       }, 100)
     })
@@ -69,10 +71,11 @@ describe('poll', function () {
       }
 
       poll.pollPeriod = 1
-      poll.commandStatus(fakeClient, 15, fakePromiseTwo, Date.now(), spyTwo)
+      const intervalId = poll.commandStatus(fakeClient, 15, fakePromiseTwo, Date.now(), spyTwo)
       setTimeout(function () {
         assert.equal(spyOne.called, true)
         assert.equal(spyTwo.called, false)
+        clearTimeout(intervalId)
         done()
       }, 100)
     })
@@ -94,10 +97,11 @@ describe('poll', function () {
         commandsStatus: sinon.stub().returns(fakePromiseOne)
       }
       poll.pollPeriod = 1
-      poll.commandStatus(fakeClient, 12, fakePromise, Date.now(), null)
+      const intervalId = poll.commandStatus(fakeClient, 12, fakePromise, Date.now(), null)
       setTimeout(function () {
         assert.equal(rejectSpy.called, true)
         assert.equal(resolveSpy.called, false)
+        clearTimeout(intervalId)
         done()
       }, 100)
     })
@@ -118,10 +122,11 @@ describe('poll', function () {
       }
 
       poll.pollPeriod = 10
-      poll.commandStatus(fakeClient, 15, fakePromiseTwo, Date.now(), spyTwo)
+      const intervalId = poll.commandStatus(fakeClient, 15, fakePromiseTwo, Date.now(), spyTwo)
       setTimeout(function () {
         assert.equal(spyOne.called, false)
         assert.equal(spyTwo.called, true)
+        clearTimeout(intervalId)
         done()
       }, 100)
     })

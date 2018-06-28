@@ -29,9 +29,9 @@
   },
   "devDependencies": {
     "@bubltechnology/eslint-config-bubl": "^2.0.1",
-    "eslint": "^3.18.0",
-    "mocha": "^3.0.0",
     "assert": "^1.3.0",
+    "eslint": "^3.18.0",
+    "mocha": "^5.2.0",
     "sinon": "^1.17.2"
   }
 }
