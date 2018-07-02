@@ -24,6 +24,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "cross-fetch": "^2.2.2",
     "q": "^1.4.1",
     "superagent": "^3.0.0"
   },
